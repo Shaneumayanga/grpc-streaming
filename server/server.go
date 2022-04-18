@@ -1,6 +1,8 @@
 package main
 
 import (
+	"context"
+	"fmt"
 	"log"
 	"net"
 	"sync"
@@ -32,6 +34,12 @@ func (s *server) FetchResponse(in *pb.Request, reply pb.HelloService_FetchRespon
 	}
 	wg.Wait()
 	return nil
+}
+
+func (s *server) Login(ctx context.Context, in *pb.LoginRequest) (*pb.LoginResponse, error) {
+	fmt.Printf("in.Username: %v\n", in.Username)
+	fmt.Printf("in.Password: %v\n", in.Password)
+	return &pb.LoginResponse{Token: "thisisthetoken"}, nil
 }
 
 func main() {

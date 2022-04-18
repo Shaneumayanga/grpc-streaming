@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"io"
 	"log"
 
@@ -23,6 +24,15 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	response, err := client.Login(context.Background(), &pb.LoginRequest{
+		Username: "shane",
+		Password: "lol",
+	})
+
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("response.Token: %v\n", response.Token)
 
 	for {
 		res, err := stream.Recv()
