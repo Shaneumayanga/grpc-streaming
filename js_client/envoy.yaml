@@ -65,19 +65,19 @@ static_resources:
 
   clusters:
     # https://www.envoyproxy.io/docs/envoy/v1.15.0/api-v3/config/cluster/v3/cluster.proto#config-cluster-v3-cluster
-    - name: alva_service
+    - name: hello_service
       type: LOGICAL_DNS
       connect_timeout: 10s
       lb_policy: round_robin
       load_assignment:
-        cluster_name: alva_service
+        cluster_name: hello_service
         endpoints:
           - lb_endpoints:
               - endpoint:
                   address:
                     socket_address:
                       address: catalog
-                      port_value: 55050
+                      port_value: 8080
       http2_protocol_options: {} # Force HTTP/2
       # Your grpc server communicates over TLS. You must configure the transport
       # socket. If you care about the overhead, you should configure the grpc

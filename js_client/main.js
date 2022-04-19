@@ -2,7 +2,7 @@ const {LoginRequest} = require("../js_client/stream/stream_pb")
 const {HelloServiceClient} = require("../js_client/stream/stream_grpc_web_pb")
 global.XMLHttpRequest = require('xhr2');
 
-const hello_service_client = new HelloServiceClient("http://localhost:8080");
+const hello_service_client = new HelloServiceClient("http://localhost:8000");
 var log = new LoginRequest();
 log.setUsername("shane");
 log.setPassword("mossmoss");
