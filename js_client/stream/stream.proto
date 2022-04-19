@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "github.com/Shaneumayanga/stream";
+
+package streaming;
+
+
+service HelloService{
+    rpc FetchResponse (Request) returns (stream Response){}
+    rpc Login(LoginRequest) returns (LoginResponse){}
+}
+
+message LoginRequest{
+    string username = 1;
+    string password = 2;
+}
+
+message LoginResponse{
+    string token = 1;
+}
+
+message Request{
+    int32 id =1;
+}
+
+message Response{
+    string result = 1;
+}
